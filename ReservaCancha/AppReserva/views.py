@@ -1,7 +1,10 @@
 from rest_framework import viewsets
-from django.contrib.auth.models import User
-from .models import Cancha, Disponibilidad, Reserva, Pago
-from .serializers import CanchaSerializer, DisponibilidadSerializer, ReservaSerializer, PagoSerializer, UserSerializer
+from .models import Register, Cancha, Disponibilidad, Reserva, Pago
+from .serializers import RegisterSerializer, CanchaSerializer, DisponibilidadSerializer, ReservaSerializer, PagoSerializer
+
+class RegisterViewSet(viewsets.ModelViewSet):
+    queryset = Register.objects.all()
+    serializer_class = RegisterSerializer
 
 class CanchaViewSet(viewsets.ModelViewSet):
     queryset = Cancha.objects.all()
@@ -18,10 +21,3 @@ class ReservaViewSet(viewsets.ModelViewSet):
 class PagoViewSet(viewsets.ModelViewSet):
     queryset = Pago.objects.all()
     serializer_class = PagoSerializer
-
-class UserViewSet(viewsets.ModelViewSet):
-    queryset = User.objects.all()
-    serializer_class = UserSerializer 
-
-
-# Create your views here.
